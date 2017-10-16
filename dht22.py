@@ -50,7 +50,7 @@ def decode(inp):
         print (res[0:4])
         # res= [0xff,0xff,0xff,0xff]
 
-    print ('res:', res[0:4])
+    #print ('res:', res[0:4])
     return(res[0:4])
 
 def DHT11(pin):
@@ -60,9 +60,10 @@ def DHT11(pin):
     return temp, hum
 
 def DHT22(pin):
+    """ Return temperature in deg Celsius and relative humidity in percent"""
     res = decode(getval(pin))
-    hum = res[0]*256+res[1]
-    temp = res[2]*256 + res[3]
+    hum = res[0] * 256 + res[1]
+    temp = res[2] * 256 + res[3]
     if (temp > 0x7fff):
         temp = 0x8000 - temp
     return temp, hum

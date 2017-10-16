@@ -1,23 +1,3 @@
-
-
-# import DHT22
-# import utime
-#
-# def measure():
-#     try:
-#         (hum, tem) = DHT22.measure()
-#         print('Temperature {0}, Humidity {1}', tem, hum)
-#         if ((hum == 0) and (tem == 0)) or (hum > 100):
-#             raise ValueError('Invalid data received from sensor')
-#     except Exception as e:
-#         print('Issue reading temperature and humidity')
-#         print(e)
-#
-# DHT22.init()
-#
-# while True:
-#     measure()
-#     utime.sleep(3)
 import time
 import pycom
 from machine import Pin
@@ -30,7 +10,6 @@ def go_DHT():
 
     while (True):
         temp, hum = DHT22(dht_pin)
-        # temp = temp * 9 // 5 + 320   # uncomment for Fahrenheit
         temp_str = '{}.{}'.format(temp//10,temp%10)
         hum_str = '{}.{}'.format(hum//10,hum%10)
         # Print or upload it
